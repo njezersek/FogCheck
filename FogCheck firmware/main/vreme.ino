@@ -1,28 +1,8 @@
-float izmeriTemperaturo(){
-  return dht.readTemperature(); 
-}
+void bmeMeritve() {
+    BME280::TempUnit tempUnit(BME280::TempUnit_Celcius);
+    BME280::PresUnit presUnit(BME280::PresUnit_Pa);
 
-float izmeriVlago(){
-  return dht.readHumidity(); 
-}
-
-float izmeriTlak(){
-  return bmp.getPressure(); 
-}
-
-float izracunTockeRosisca() {
-  float  rosa_k1 = 0.0;
-  float  rosa_k2 = 0.0;
-  if (temp < 0) {
-    rosa_k1 = 17.966;
-    rosa_k2 = 247.15;
-  } else {
-    rosa_k1 = 17.368;
-    rosa_k2 = 238.88;
-  }
-
-  float rosa = (rosa_k2 * (log(vlaga / 100) + (rosa_k1 * temp) / (rosa_k2 + temp))) / (rosa_k1 - (log(vlaga / 100) + (rosa_k1 * temp) / (rosa_k2 + temp)));
-  return rosa;
+    bme.read(tlak, temp, vlaga, tempUnit, presUnit);
 }
 
 bool preveriMegla(){

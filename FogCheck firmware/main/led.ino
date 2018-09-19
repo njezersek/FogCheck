@@ -1,6 +1,6 @@
 void ledTrakOpozorilo() {
   ledIndex++; /* motion speed */
-  if (ledIndex > NUM_LEDS)ledIndex = 0;
+  if (ledIndex > 30)ledIndex = 0;
 
   int a   = round(400 / (ledIndex + 5.5) - 11); //= round(200 / (ledIndex + 6) - 5); // -> 30 ledic
   int pos = NUM_LEDS - a;
